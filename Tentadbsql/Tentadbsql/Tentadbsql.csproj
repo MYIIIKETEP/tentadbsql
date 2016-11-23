@@ -33,8 +33,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,11 +54,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Northwind\Alphabetical_list_of_products.cs" />
+    <Compile Include="Northwind\Categories.cs" />
+    <Compile Include="Northwind\CategoryProducts.cs" />
+    <Compile Include="Northwind\Category_Sales_for_1997.cs" />
+    <Compile Include="Northwind\Current_Product_List.cs" />
+    <Compile Include="Northwind\CustomerDemographics.cs" />
+    <Compile Include="Northwind\CustomerOrderDetails.cs" />
+    <Compile Include="Northwind\Customers.cs" />
+    <Compile Include="Northwind\Customer_and_Suppliers_by_City.cs" />
+    <Compile Include="Northwind\Employees.cs" />
+    <Compile Include="Northwind\Invoices.cs" />
+    <Compile Include="Northwind\Model1.cs" />
+    <Compile Include="Northwind\MoreThan10.cs" />
+    <Compile Include="Northwind\OrderDetailCount.cs" />
+    <Compile Include="Northwind\Orders.cs" />
+    <Compile Include="Northwind\Orders_Qry.cs" />
+    <Compile Include="Northwind\Order_Details.cs" />
+    <Compile Include="Northwind\Order_Details_Extended.cs" />
+    <Compile Include="Northwind\Order_Subtotals.cs" />
+    <Compile Include="Northwind\Products.cs" />
+    <Compile Include="Northwind\Products_Above_Average_Price.cs" />
+    <Compile Include="Northwind\Products_by_Category.cs" />
+    <Compile Include="Northwind\Product_Sales_for_1997.cs" />
+    <Compile Include="Northwind\Region.cs" />
+    <Compile Include="Northwind\Sales_by_Category.cs" />
+    <Compile Include="Northwind\Sales_Totals_by_Amount.cs" />
+    <Compile Include="Northwind\Shippers.cs" />
+    <Compile Include="Northwind\Simple_employees.cs" />
+    <Compile Include="Northwind\Summary_of_Sales_by_Quarter.cs" />
+    <Compile Include="Northwind\Summary_of_Sales_by_Year.cs" />
+    <Compile Include="Northwind\SupplierProductView.cs" />
+    <Compile Include="Northwind\Suppliers.cs" />
+    <Compile Include="Northwind\sysdiagrams.cs" />
+    <Compile Include="Northwind\Territories.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
