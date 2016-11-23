@@ -1,6 +1,17 @@
 ﻿CREATE PROCEDURE [dbo].[AddTerritort]
-	@TerritortDescription int = 0,
-	@param2 int
+	       (@TerritoryID nvarchar(20),
+           @RegionID int,
+           @TerritoryDescription nchar(50))
+
+           
 AS
-	SELECT @param1, @param2
-RETURN 0
+
+INSERT INTO [dbo].[Territories]
+           ([TerritoryID]
+           ,[TerritoryDescription]
+           ,[RegionID])
+		         
+VALUES
+         (@TerritoryID,
+           @RegionID,
+           @TerritoryDescription)
