@@ -21,7 +21,7 @@ namespace Tentadbsql
             //ProductByCategoryName("'Confections'");
             //SaleByTerritory();
             //EployeesPerRegion();
-            OrdersPerEmployee();
+            //OrdersPerEmployee();
         }
 
         private static void OrdersPerEmployee()
