@@ -21,7 +21,7 @@ namespace Tentadbsql
             //ProductByCategoryName("'Confections'");
             //SaleByTerritory();
             //EployeesPerRegion();
-            //OrdersPerEmployee();
+            OrdersPerEmployee();
         }
 
         private static void OrdersPerEmployee()
@@ -33,7 +33,7 @@ namespace Tentadbsql
                           select data;
                 foreach (var s in xxx)
                 {
-                    Console.WriteLine(s.Employees.FirstName + " " + s.OrderID);
+                    Console.WriteLine(s.EmployeeID + " " + s.OrderID);
                 }
 
             }

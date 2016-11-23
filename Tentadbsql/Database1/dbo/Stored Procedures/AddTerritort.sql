@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[AddTerritort]
+﻿ALTER PROCEDURE [dbo].[AddTerritort]
 	       (@TerritoryID nvarchar(20),
            @RegionID int,
            @TerritoryDescription nchar(50))
@@ -8,8 +8,8 @@ AS
 
 INSERT INTO [dbo].[Territories]
            ([TerritoryID]
-           ,[TerritoryDescription]
-           ,[RegionID])
+           ,[RegionID]
+           ,[TerritoryDescription])
 		         
 VALUES
          (@TerritoryID,
