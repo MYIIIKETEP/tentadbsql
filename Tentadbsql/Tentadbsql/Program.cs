@@ -21,7 +21,23 @@ namespace Tentadbsql
             //ProductByCategoryName("'Confections'");
             //SaleByTerritory();
             //EployeesPerRegion();
-            OrdersPerEmployee();
+            //OrdersPerEmployee();
+            CustomerswithNamesLongerThan25Characters();
+        }
+
+        private static void CustomerswithNamesLongerThan25Characters()
+        {
+            using (var context = new Model1())
+            {
+                var xxx = from data in context.Customers
+                          where data.CompanyName.Length > 25
+                          select data;
+                foreach (var s in xxx)
+
+                {
+                    Console.WriteLine(s.CompanyName);
+                }
+            }      
         }
 
         private static void OrdersPerEmployee()
