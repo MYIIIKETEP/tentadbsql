@@ -20,6 +20,36 @@ namespace Tentadbsql
             string v = "'Confections'";
             //ProductByCategoryName("'Confections'");
             //SaleByTerritory();
+            //EployeesPerRegion();
+            OrdersPerEmployee();
+        }
+
+        private static void OrdersPerEmployee()
+        {
+            using (var context = new Model1())
+            {
+                var xxx = from data in context.Orders
+                          where data.Employees.EmployeeID == data.EmployeeID
+                          select data;
+                foreach (var s in xxx)
+                {
+                    Console.WriteLine(s.Employees.FirstName + " " + s.OrderID);
+                }
+
+            }
+        }
+
+        private static void EployeesPerRegion()
+        {
+            SqlConnection cn = new SqlConnection(cns);
+            cn.Open();
+            SqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT DISTINCT COUNT(et.EmployeeID) AS expr1, r.RegionDescription FROM Region AS r INNER JOIN Territories AS t ON r.RegionID = t.RegionID INNER JOIN EmployeeTerritories AS et ON t.TerritoryID = et.TerritoryID GROUP BY r.RegionID, r.RegionDescription";
+            SqlDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                Console.WriteLine(rd.GetInt32(0) + " " + rd.GetString(1));
+            }
         }
 
         private static void SaleByTerritory()

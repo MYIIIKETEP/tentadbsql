@@ -26,6 +26,10 @@ namespace Tentadbsql.Northwind
         [Required]
         [StringLength(10)]
         public string FirstName { get; set; }
+        public override string ToString()
+        {
+            return string.Format("{0}", FirstName);
+        }
 
         [StringLength(30)]
         public string Title { get; set; }
@@ -79,5 +83,7 @@ namespace Tentadbsql.Northwind
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Territories> Territories { get; set; }
+
+        
     }
 }
