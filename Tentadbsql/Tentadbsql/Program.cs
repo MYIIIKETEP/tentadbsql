@@ -30,11 +30,14 @@ namespace Tentadbsql
             {
                 var xxx = from data in context.Orders
                           where data.Employees.EmployeeID == data.EmployeeID
-                          select data;
+                          select new { data.Employees.FirstName, data.OrderID };
                 foreach (var s in xxx)
                 {
-                    Console.WriteLine(s.EmployeeID + " " + s.OrderID);
+                    Console.WriteLine(s);
                 }
+
+
+
 
             }
         }
