@@ -18,15 +18,30 @@ namespace Tentadbsql
 
 
             string v = "'Confections'";
-            ProductByCategoryName();
+            //ProductByCategoryName("'Confections'");
+            //SaleByTerritory();
         }
 
-        private static void ProductByCategoryName()
+        private static void SaleByTerritory()
         {
             SqlConnection cn = new SqlConnection(cns);
             cn.Open();
             SqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT Products.ProductName, Products.UnitPrice, Products.UnitsInStock FROM Categories INNER JOIN Products ON Categories.CategoryName = 'Confections' ";
+            cmd.CommandText = "WITH    EmployeeSales AS(SELECT   e.EmployeeID, e.LastName, SUM(od.Quantity * od.UnitPrice) ESales FROM     dbo.Employees AS e INNER JOIN dbo.Orders AS o ON e.EmployeeID = o.EmployeeID INNER JOIN dbo.[Order Details] AS od ON o.OrderID = od.OrderID GROUP BY e.EmployeeID, e.LastName), EmployeeRegion AS(SELECT DISTINCT EmployeeID, r.RegionID, RegionDescription FROM     dbo.Region AS r INNER JOIN dbo.Territories AS t ON r.RegionID = t.RegionID INNER JOIN dbo.EmployeeTerritories AS et ON t.TerritoryID = et.TerritoryID) SELECT EmployeeRegion.RegionDescription ,  SUM(EmployeeSales.ESales) RegionTotalSale   FROM    EmployeeSales INNER JOIN EmployeeRegion ON EmployeeSales.EmployeeID = EmployeeRegion.EmployeeID GROUP BY EmployeeRegion.RegionID , EmployeeRegion.RegionDescription";
+
+            SqlDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                Console.WriteLine(rd.GetString(0) + " " + rd.GetDecimal(1));
+            }
+        }
+
+        private static void ProductByCategoryName(string v)
+        {
+            SqlConnection cn = new SqlConnection(cns);
+            cn.Open();
+            SqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT Products.ProductName, Products.UnitPrice, Products.UnitsInStock FROM Categories INNER JOIN Products ON Categories.CategoryName =" + v;
 
 
                 SqlDataReader rd = cmd.ExecuteReader();
@@ -38,15 +53,10 @@ namespace Tentadbsql
             rd.Close();
             cn.Close();
             cn.Open();
-
-
-
-
-
-
         }
     }
 }
+
             
     
 
